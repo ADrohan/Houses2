@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Houses</string>
+    <string name="button_addHouse">Add House</string>
+</resources>
