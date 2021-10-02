@@ -2,6 +2,7 @@ package org.wit.houses
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.material.snackbar.Snackbar
 import org.wit.houses.databinding.ActivityHouseBinding
 
 import timber.log.Timber
@@ -21,9 +22,15 @@ class HouseActivity : AppCompatActivity() {
         i("House Activity started...")
 
         binding.btnAdd.setOnClickListener() {
-            i("add Button Pressed")
+            val houseTitle = binding.houseTitle.text.toString()
+            if (houseTitle.isNotEmpty()) {
+
+                i("add Button Pressed")
+            } else {
+                Snackbar
+                    .make(it, "Please Enter a title", Snackbar.LENGTH_LONG)
+                    .show()
+            }
         }
-
-
     }
 }
