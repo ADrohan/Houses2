@@ -1,9 +1,9 @@
-package org.wit.houses
+package org.wit.houses.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import org.wit.houses.databinding.ActivityHouseBinding
+import org.wit.houses.activities.databinding.ActivityHouseBinding
 
 import timber.log.Timber
 import timber.log.Timber.i
