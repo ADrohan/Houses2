@@ -13,6 +13,7 @@ class HouseActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHouseBinding
     var house = HouseModel()
+    val houses = ArrayList<HouseModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +26,10 @@ class HouseActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             house.address= binding.houseAddress.text.toString()
             if (house.address.isNotEmpty()) {
-
+                houses.add(house.copy())
                 i("add Button Pressed $house.address")
+                for (i in houses.indices)
+                { i("Placemark[$i]:${this.houses[i]}") }
             } else {
                 Snackbar
                     .make(it, "Please Enter aa address", Snackbar.LENGTH_LONG)
