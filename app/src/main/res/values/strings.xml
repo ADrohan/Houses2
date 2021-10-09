@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Houses</string>
     <string name="button_addHouse">Add House</string>
-    <string name="hint_houseTitle">House Title</string>
+    <string name="hint_houseAddress">House Address</string>
 </resources>
