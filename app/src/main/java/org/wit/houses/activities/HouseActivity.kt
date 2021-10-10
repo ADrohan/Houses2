@@ -25,6 +25,12 @@ class HouseActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             house.address= binding.houseAddress.text.toString()
+            house.listPrice= binding.listPrice.text.toString()
+            house.bedrooms= binding.bedrooms.text.toString()
+            house.bathrooms=binding.bathrooms.text.toString()
+            house.description=binding.description.text.toString()
+            house.soldPrice= binding.soldPrice.text.toString()
+            house.auctioneer= binding.auctioneer.text.toString()
             if (house.address.isNotEmpty()) {
                 houses.add(house.copy())
                 i("add Button Pressed $house.address")
@@ -32,7 +38,7 @@ class HouseActivity : AppCompatActivity() {
                 { i("Placemark[$i]:${this.houses[i]}") }
             } else {
                 Snackbar
-                    .make(it, "Please Enter aa address", Snackbar.LENGTH_LONG)
+                    .make(it, "Please Enter aa address", Snackbar.LENGTH_LONG )
                     .show()
             }
         }
