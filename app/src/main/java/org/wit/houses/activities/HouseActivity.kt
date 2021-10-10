@@ -3,7 +3,7 @@ package org.wit.houses.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import org.wit.houses.activities.databinding.ActivityHouseBinding
+import org.wit.houses.databinding.ActivityHouseBinding
 import org.wit.houses.main.MainApp
 import org.wit.houses.models.HouseModel
 
@@ -33,9 +33,9 @@ class HouseActivity : AppCompatActivity() {
             house.auctioneer= binding.auctioneer.text.toString()
             if (house.address.isNotEmpty()) {
                 app.houses.add(house.copy())
-                i("add Button Pressed $house.address")
+                i("add Button Pressed ${house}")
                 for (i in app.houses.indices)
-                { i("Placemark[$i]:${this.app.houses[i]}") }
+                { i("House[$i]:${this.app.houses[i]}") }
             } else {
                 Snackbar
                     .make(it, "Please Enter aa address", Snackbar.LENGTH_LONG )
