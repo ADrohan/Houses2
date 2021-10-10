@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:elevation="24dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/houseAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryColor"
+            android:layout_alignParentTop="true"
+            android:textSize="18sp"
+            android:textColor="@color/primaryTextColor"
+            tools:text="Address" />
+
+        <TextView
+            android:id="@+id/listPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
+            android:textSize="24sp"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_below="@id/houseAddress"
+            tools:text="List Price" />
+
+        <TextView
+            android:id="@+id/bedrooms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_below="@id/listPrice"
+            tools:text="Bedrooms" />
+
+        <TextView
+            android:id="@+id/bathrooms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_below="@id/bedrooms"
+            tools:text="Bathrooms" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_below="@id/bathrooms"
+            tools:text="Description" />
+
+        <TextView
+            android:id="@+id/auctioneer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_below="@id/description"
+            tools:text="Auctioneer" />
+
+        <TextView
+            android:id="@+id/soldPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="24sp"
+            android:layout_below="@id/auctioneer"
+            tools:text="Sold Price" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

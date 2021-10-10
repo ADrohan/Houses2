@@ -13,5 +13,7 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Houses started")
+        houses.add(HouseModel("3 Bridge St., Waterford", "80000","2", "2", "description", "95000", "DMG" ))
+        houses.add(HouseModel("4 Bridge St., Waterford", "79000","2", "2", "description", "94000", "DMG" ))
     }
 }
