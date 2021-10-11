@@ -3,6 +3,7 @@ package org.wit.houses.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,8 @@ class HouseListActivity : AppCompatActivity() {
         binding = ActivityHouseListBinding.inflate(layoutInflater)
       //  setContentView(R.layout.activity_house_list)
         setContentView(binding.root)
+        binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
 
         app = application as MainApp
 
@@ -29,6 +32,10 @@ class HouseListActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = HouseAdapter(app.houses)
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }
 class HouseAdapter constructor(private var houses: List<HouseModel>) :

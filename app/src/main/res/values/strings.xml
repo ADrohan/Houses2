@@ -8,4 +8,5 @@
     <string name="hint_bedrooms">No of Bedrooms</string>
     <string name="hint_bathrooms">No of Bathrooms</string>
     <string name="hint_soldPrice">Sold Price</string>
+    <string name="menu_addHouse">Add</string>
 </resources>
