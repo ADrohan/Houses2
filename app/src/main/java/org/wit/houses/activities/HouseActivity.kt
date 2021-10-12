@@ -2,7 +2,10 @@ package org.wit.houses.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
+import org.wit.houses.R
 import org.wit.houses.databinding.ActivityHouseBinding
 import org.wit.houses.main.MainApp
 import org.wit.houses.models.HouseModel
@@ -20,6 +23,9 @@ class HouseActivity : AppCompatActivity() {
         binding = ActivityHouseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolbarAdd.title = title
+        setSupportActionBar(binding.toolbarAdd)
+
         app = application as MainApp
         i("House Activity started...")
 
@@ -36,11 +42,28 @@ class HouseActivity : AppCompatActivity() {
                 i("add Button Pressed ${house}")
                 for (i in app.houses.indices)
                 { i("House[$i]:${this.app.houses[i]}") }
-            } else {
+                setResult(RESULT_OK)
+                finish()
+            }
+            else {
                 Snackbar
-                    .make(it, "Please Enter aa address", Snackbar.LENGTH_LONG )
+                    .make(it, "Please Enter an address", Snackbar.LENGTH_LONG )
                     .show()
             }
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_house, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
