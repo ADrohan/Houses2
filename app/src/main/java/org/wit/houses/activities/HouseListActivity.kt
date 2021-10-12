@@ -27,7 +27,7 @@ class HouseListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = HouseAdapter(app.houses)
+        binding.recyclerView.adapter = HouseAdapter(app.houses.findAll())
 
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

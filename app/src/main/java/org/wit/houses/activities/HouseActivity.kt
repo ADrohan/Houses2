@@ -38,10 +38,7 @@ class HouseActivity : AppCompatActivity() {
             house.soldPrice= binding.soldPrice.text.toString()
             house.auctioneer= binding.auctioneer.text.toString()
             if (house.address.isNotEmpty()) {
-                app.houses.add(house.copy())
-                i("add Button Pressed ${house}")
-                for (i in app.houses.indices)
-                { i("House[$i]:${this.app.houses[i]}") }
+                app.houses.create(house.copy())
                 setResult(RESULT_OK)
                 finish()
             }
