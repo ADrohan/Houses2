@@ -10,4 +10,6 @@
     <string name="hint_soldPrice">Sold Price</string>
     <string name="menu_addHouse">Add</string>
     <string name="menu_cancelHouse">Cancel</string>
+    <string name="enter_houseAddress">Please enter a house address</string>
+    <string name="Update_house">Update House</string>
 </resources>

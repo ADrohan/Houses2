@@ -38,6 +38,7 @@ class HouseActivity : AppCompatActivity() {
             binding.description.setText(house.description)
             binding.soldPrice.setText(house.soldPrice)
             binding.auctioneer.setText(house.auctioneer)
+            binding.btnAdd.setText(R.string.Update_house)
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -55,7 +56,7 @@ class HouseActivity : AppCompatActivity() {
             }
             else {
                 Snackbar
-                    .make(it, "Please Enter an address", Snackbar.LENGTH_LONG )
+                    .make(it,R.string.enter_houseAddress, Snackbar.LENGTH_LONG )
                     .show()
             }
         }
