@@ -8,10 +8,12 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.houses.R
 import org.wit.houses.adapters.HouseAdapter
+import org.wit.houses.adapters.HouseListener
 import org.wit.houses.databinding.ActivityHouseListBinding
 import org.wit.houses.main.MainApp
+import org.wit.houses.models.HouseModel
 
-class HouseListActivity : AppCompatActivity() {
+class HouseListActivity : AppCompatActivity(), HouseListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityHouseListBinding
@@ -27,7 +29,7 @@ class HouseListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = HouseAdapter(app.houses.findAll())
+        binding.recyclerView.adapter = HouseAdapter(app.houses.findAll(), this)
 
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -43,5 +45,9 @@ class HouseListActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onHouseClick(house: HouseModel) {
+        val launcherIntent = Intent(this, HouseActivity::class.java)
+        startActivityForResult(launcherIntent,0)
     }
 }

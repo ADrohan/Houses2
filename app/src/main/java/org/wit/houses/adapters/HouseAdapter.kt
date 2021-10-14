@@ -6,7 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import org.wit.houses.databinding.CardHouseBinding
 import org.wit.houses.models.HouseModel
 
-class HouseAdapter constructor(private var houses: List<HouseModel>) :
+interface HouseListener {
+    fun onHouseClick(house: HouseModel)
+}
+
+class HouseAdapter constructor(private var houses: List<HouseModel>,
+                                private  val listener: HouseListener) :
     RecyclerView.Adapter<HouseAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -17,7 +22,7 @@ class HouseAdapter constructor(private var houses: List<HouseModel>) :
     }
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val house = houses[holder.adapterPosition]
-        holder.bind(house)
+        holder.bind(house, listener)
     }
 
     override fun getItemCount(): Int = houses.size
@@ -25,7 +30,7 @@ class HouseAdapter constructor(private var houses: List<HouseModel>) :
     class MainHolder(private val binding : CardHouseBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(house: HouseModel) {
+        fun bind(house: HouseModel, listener: HouseListener) {
             binding.houseAddress.text = house.address
             binding.listPrice.text = house.listPrice
             binding.bedrooms.text = house.bedrooms
@@ -33,6 +38,8 @@ class HouseAdapter constructor(private var houses: List<HouseModel>) :
             binding.description.text = house.description
             binding.auctioneer.text = house.auctioneer
             binding.soldPrice.text = house.soldPrice
+
+            binding.root.setOnClickListener { listener.onHouseClick(house)}
         }
     }
 }
