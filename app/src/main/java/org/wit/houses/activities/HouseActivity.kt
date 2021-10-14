@@ -29,6 +29,17 @@ class HouseActivity : AppCompatActivity() {
         app = application as MainApp
         i("House Activity started...")
 
+        if (intent.hasExtra("house_edit")) {
+            house = intent.extras?.getParcelable("house_edit")!!
+            binding.houseAddress.setText(house.address)
+            binding.listPrice.setText(house.listPrice)
+            binding.bedrooms.setText(house.bedrooms)
+            binding.bathrooms.setText(house.bathrooms)
+            binding.description.setText(house.description)
+            binding.soldPrice.setText(house.soldPrice)
+            binding.auctioneer.setText(house.auctioneer)
+        }
+
         binding.btnAdd.setOnClickListener() {
             house.address= binding.houseAddress.text.toString()
             house.listPrice= binding.listPrice.text.toString()

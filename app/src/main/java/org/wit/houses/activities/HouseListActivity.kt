@@ -48,6 +48,7 @@ class HouseListActivity : AppCompatActivity(), HouseListener {
     }
     override fun onHouseClick(house: HouseModel) {
         val launcherIntent = Intent(this, HouseActivity::class.java)
+        launcherIntent.putExtra("house_edit", house)
         startActivityForResult(launcherIntent,0)
     }
 }
