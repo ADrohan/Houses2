@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HouseModel(
+    var id: Long = 0,
     var address: String = "",
     var listPrice: String = "",
     var bedrooms: String = "",
