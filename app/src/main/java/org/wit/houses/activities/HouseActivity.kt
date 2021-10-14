@@ -17,6 +17,7 @@ class HouseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHouseBinding
     var house = HouseModel()
     lateinit var app: MainApp
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class HouseActivity : AppCompatActivity() {
         i("House Activity started...")
 
         if (intent.hasExtra("house_edit")) {
+            edit = true
             house = intent.extras?.getParcelable("house_edit")!!
             binding.houseAddress.setText(house.address)
             binding.listPrice.setText(house.listPrice)
@@ -49,16 +51,20 @@ class HouseActivity : AppCompatActivity() {
             house.description=binding.description.text.toString()
             house.soldPrice= binding.soldPrice.text.toString()
             house.auctioneer= binding.auctioneer.text.toString()
-            if (house.address.isNotEmpty()) {
-                app.houses.create(house.copy())
-                setResult(RESULT_OK)
-                finish()
-            }
-            else {
+            if (house.address.isEmpty() ){
                 Snackbar
                     .make(it,R.string.enter_houseAddress, Snackbar.LENGTH_LONG )
                     .show()
             }
+            else {
+                if (edit) {
+                    app.houses.update(house.copy())
+                } else {
+                    app.houses.create(house.copy())
+                }
+            }
+            setResult(RESULT_OK)
+            finish()
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
