@@ -24,6 +24,7 @@
             android:textColor="@color/primaryTextColor"
             tools:text="Address" />
 
+
         <TextView
             android:id="@+id/listPrice"
             android:layout_width="match_parent"
