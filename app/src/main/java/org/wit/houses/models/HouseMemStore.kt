@@ -31,6 +31,7 @@ class HouseMemStore : HouseStore {
             foundHouse.description = house.description
             foundHouse.soldPrice = house.soldPrice
             foundHouse.auctioneer= house.auctioneer
+            foundHouse.image = house.image
             logAll()
         }
     }
