@@ -1,6 +1,7 @@
 package org.wit.houses.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -54,6 +55,9 @@ class HouseActivity : AppCompatActivity() {
             Picasso.get()
                 .load(house.image)
                 .into(binding.houseImage)
+            if (house.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_houseImage)
+            }
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -109,6 +113,7 @@ class HouseActivity : AppCompatActivity() {
                             Picasso.get()
                                 .load(house.image)
                                 .into(binding.houseImage)
+                            binding.chooseImage.setText(R.string.change_houseImage)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

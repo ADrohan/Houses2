@@ -14,4 +14,5 @@
     <string name="Update_house">Update House</string>
     <string name="button_addImage"> Add Image </string>
     <string name="select_house_image">Select house image</string>
+    <string name="change_houseImage">Change House Image</string>
 </resources>
