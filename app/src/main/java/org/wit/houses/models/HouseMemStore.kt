@@ -36,6 +36,14 @@ class HouseMemStore : HouseStore {
         }
     }
 
+    override fun delete(house: HouseModel) {
+        var foundHouse: HouseModel? = houses.find { p -> p.id == house.id}
+        if (foundHouse != null) {
+            foundHouse = house
+            houses.remove(house)
+        }
+    }
+
     fun logAll() {
         houses.forEach{ i("${it}") }
     }
