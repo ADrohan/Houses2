@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import org.wit.houses.R
 import org.wit.houses.databinding.ActivityHouseBinding
 import org.wit.houses.helpers.showImagePicker
@@ -50,6 +51,9 @@ class HouseActivity : AppCompatActivity() {
             binding.soldPrice.setText(house.soldPrice)
             binding.auctioneer.setText(house.auctioneer)
             binding.btnAdd.setText(R.string.Update_house)
+            Picasso.get()
+                .load(house.image)
+                .into(binding.houseImage)
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -101,6 +105,10 @@ class HouseActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
+                            house.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(house.image)
+                                .into(binding.houseImage)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,85 +18,121 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8sp"
+            android:paddingRight="8sp"
+            android:paddingTop="8sp"
+            android:paddingBottom="8sp"
             android:textStyle="normal"
             android:background="@color/primaryColor"
             android:layout_alignParentTop="true"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textColor="@color/primaryTextColor"
             tools:text="Address" />
 
 
         <TextView
             android:id="@+id/listPrice"
+            android:drawablePadding="8sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8sp"
+            android:paddingRight="8sp"
+            android:paddingTop="8sp"
             android:background="@color/secondaryColor"
             android:textSize="18sp"
             android:textStyle="normal"
             android:textColor="@color/secondaryTextColor"
             android:layout_below="@id/houseAddress"
-            tools:text="List Price" />
+            tools:text="List Price"
+            app:drawableLeftCompat="@drawable/ic_baseline_sell_24"
+            app:drawableTint="@color/primaryLightColor"
+            app:drawableTintMode="multiply" />
 
         <TextView
             android:id="@+id/bedrooms"
+            android:drawablePadding="8sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/listPrice"
             android:background="@color/secondaryColor"
             android:paddingLeft="8sp"
+            android:paddingRight="8sp"
             android:textSize="18sp"
             android:textStyle="normal"
             android:textColor="@color/secondaryTextColor"
-            tools:text="Bedrooms" />
+            tools:text="Bedrooms"
+            app:drawableLeftCompat="@drawable/ic_baseline_bed_24"
+            app:drawableTint="@color/primaryLightColor"
+            app:drawableTintMode="multiply" />
 
         <TextView
             android:id="@+id/bathrooms"
+            android:drawablePadding="8sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8sp"
+            android:paddingRight="8sp"
             android:textSize="18sp"
             android:textStyle="normal"
             android:background="@color/secondaryColor"
             android:textColor="@color/secondaryTextColor"
             android:layout_below="@id/bedrooms"
-            tools:text="Bathrooms" />
+            tools:text="Bathrooms"
+            app:drawableLeftCompat="@drawable/ic_outline_bathtub_24"
+            app:drawableTint="@color/primaryLightColor"
+            app:drawableTintMode="multiply" />
 
         <TextView
             android:id="@+id/description"
+            android:drawablePadding="8sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8sp"
+            android:paddingRight="8sp"
             android:textSize="18sp"
             android:textStyle="normal"
             android:background="@color/secondaryColor"
             android:textColor="@color/secondaryTextColor"
             android:layout_below="@id/bathrooms"
-            tools:text="Description" />
+            tools:text="Description"
+            app:drawableTint="@color/primaryLightColor"
+            app:drawableTintMode="multiply"
+            app:drawableLeftCompat="@drawable/ic_outline_description_24" />
 
         <TextView
             android:id="@+id/auctioneer"
+            android:drawablePadding="8sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8sp"
+            android:paddingRight="8sp"
             android:textSize="18sp"
             android:textStyle="normal"
             android:background="@color/secondaryColor"
             android:textColor="@color/secondaryTextColor"
             android:layout_below="@id/description"
-            tools:text="Auctioneer" />
+            tools:text="Auctioneer"
+            app:drawableLeftCompat="@drawable/ic_baseline_person_24"
+            app:drawableTint="@color/primaryLightColor"
+            app:drawableTintMode="multiply" />
 
         <TextView
             android:id="@+id/soldPrice"
+            android:drawablePadding="8sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingRight="8sp"
             android:paddingLeft="8sp"
-            android:textSize="18sp"
-            android:textStyle="normal"
+            android:paddingTop="8sp"
+            android:paddingBottom="8sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:background="@color/secondaryColor"
-            android:textColor="@color/secondaryTextColor"
+            android:textColor="@color/primaryDarkColor"
             android:layout_below="@id/auctioneer"
-            tools:text="Sold Price" />
+            tools:text="Sold Price"
+            app:drawableLeftCompat="@drawable/ic_baseline_euro_24"
+            app:drawableTint="@color/primaryDarkColor"
+            app:drawableTintMode="multiply" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

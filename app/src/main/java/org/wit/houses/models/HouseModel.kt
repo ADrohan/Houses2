@@ -1,5 +1,6 @@
 package org.wit.houses.models
 
+import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
@@ -13,4 +14,5 @@ data class HouseModel(
     var description: String = "",
     var soldPrice: String = "",
     var auctioneer: String = "",
+    var image: Uri = Uri.EMPTY
 ) : Parcelable
