@@ -60,6 +60,12 @@ class HouseActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnDelete.setOnClickListener() {
+            app.houses.delete(house)
+            setResult(RESULT_OK)
+            finish()
+        }
+
         binding.btnAdd.setOnClickListener() {
             house.address= binding.houseAddress.text.toString()
             house.listPrice= binding.listPrice.text.toString()
