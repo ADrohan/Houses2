@@ -11,8 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import org.wit.houses.R
-import org.wit.houses.R.color.design_default_color_primary_dark
-import org.wit.houses.R.color.primaryDarkColor
 import org.wit.houses.databinding.ActivityHouseBinding
 import org.wit.houses.helpers.showImagePicker
 import org.wit.houses.main.MainApp
@@ -20,7 +18,6 @@ import org.wit.houses.models.HouseModel
 import splitties.alertdialog.*
 
 import timber.log.Timber.i
-import java.nio.file.Files.delete
 
 class HouseActivity : AppCompatActivity() {
 
@@ -28,8 +25,6 @@ class HouseActivity : AppCompatActivity() {
     var house = HouseModel()
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
