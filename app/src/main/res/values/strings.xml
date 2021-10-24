@@ -16,4 +16,5 @@
     <string name="select_house_image">Select house image</string>
     <string name="change_houseImage">Change House Image</string>
     <string name="button_deleterHouse">Delete House</string>
+    <string name="dialog_msg_confirm_irreversible_stuff">Are you sure you want to delete this house?</string>
 </resources>

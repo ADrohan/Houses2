@@ -11,12 +11,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import org.wit.houses.R
+import org.wit.houses.R.color.design_default_color_primary_dark
+import org.wit.houses.R.color.primaryDarkColor
 import org.wit.houses.databinding.ActivityHouseBinding
 import org.wit.houses.helpers.showImagePicker
 import org.wit.houses.main.MainApp
 import org.wit.houses.models.HouseModel
+import splitties.alertdialog.*
 
 import timber.log.Timber.i
+import java.nio.file.Files.delete
 
 class HouseActivity : AppCompatActivity() {
 
@@ -25,7 +29,7 @@ class HouseActivity : AppCompatActivity() {
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
 
-    //var edit = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +65,10 @@ class HouseActivity : AppCompatActivity() {
         }
 
         binding.btnDelete.setOnClickListener() {
-            app.houses.delete(house)
-            setResult(RESULT_OK)
-            finish()
+            doIrreversibleStuffOrCancel()
+          //  app.houses.delete(house)
+           // setResult(RESULT_OK)
+           // finish()
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -120,11 +125,23 @@ class HouseActivity : AppCompatActivity() {
                                 .load(house.image)
                                 .into(binding.houseImage)
                             binding.chooseImage.setText(R.string.change_houseImage)
-                        } // end of if
+                        }
                     }
                     RESULT_CANCELED -> { } else -> { }
                 }
             }
+    }
+    private fun doIrreversibleStuffOrCancel() {
+        alert {
+            messageResource = R.string.dialog_msg_confirm_irreversible_stuff
+            okButton {
+                app.houses.delete(house)
+                setResult(RESULT_OK)
+                finish()
+            }
+            cancelButton()
+        }.onShow {
+        }.show()
     }
 
 }

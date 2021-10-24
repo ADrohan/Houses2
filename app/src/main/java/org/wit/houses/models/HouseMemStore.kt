@@ -44,6 +44,7 @@ class HouseMemStore : HouseStore {
         }
     }
 
+
     fun logAll() {
         houses.forEach{ i("${it}") }
     }
