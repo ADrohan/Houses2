@@ -92,6 +92,9 @@ class HouseActivity : AppCompatActivity() {
         binding.chooseImage.setOnClickListener {
             showImagePicker(imageIntentLauncher)
         }
+        binding.placemarkLocation.setOnClickListener {
+            i ("Set Location Pressed")
+        }
         registerImagePickerCallback()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
