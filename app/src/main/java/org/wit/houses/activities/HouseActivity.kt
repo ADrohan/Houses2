@@ -22,6 +22,7 @@ import timber.log.Timber.i
 class HouseActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHouseBinding
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     var house = HouseModel()
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
@@ -93,9 +94,12 @@ class HouseActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
         binding.placemarkLocation.setOnClickListener {
-            i ("Set Location Pressed")
+          //  i ("Set Location Pressed")
+            val launcherIntent = Intent(this, MapsActivity::class.java)
+            mapIntentLauncher.launch(launcherIntent)
         }
         registerImagePickerCallback()
+        registerMapCallback()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_house, menu)
@@ -140,6 +144,11 @@ class HouseActivity : AppCompatActivity() {
             cancelButton()
         }.onShow {
         }.show()
+    }
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { i("Map Loaded") }
     }
 
 }
