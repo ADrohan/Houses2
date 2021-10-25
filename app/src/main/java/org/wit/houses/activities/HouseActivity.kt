@@ -25,7 +25,6 @@ class HouseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHouseBinding
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     var house = HouseModel()
-    var location = Location(52.245696, -7.139102, 15f)
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
 
@@ -93,7 +92,12 @@ class HouseActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
         binding.placemarkLocation.setOnClickListener {
-           // val location = Location(52.245696, -7.139102, 15f)
+            val location = Location(52.245696, -7.139102, 15f)
+            if (house.zoom != 0f) {
+                location.lat =  house.lat
+                location.lng = house.lng
+                location.zoom = house.zoom
+            }
             val launcherIntent = Intent(this, MapsActivity::class.java)
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
@@ -153,9 +157,12 @@ class HouseActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Location ${result.data.toString()}")
-                            location = result.data!!.extras?.getParcelable("location")!!
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
-                        } // end of if
+                            house.lat = location.lat
+                            house.lng = location.lng
+                            house.zoom = location.zoom
+                        }
                     }
                     RESULT_CANCELED -> { } else -> { }
                 }

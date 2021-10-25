@@ -32,6 +32,9 @@ class HouseMemStore : HouseStore {
             foundHouse.soldPrice = house.soldPrice
             foundHouse.auctioneer= house.auctioneer
             foundHouse.image = house.image
+            foundHouse.lat = house.lat
+            foundHouse.lng = house.lng
+            foundHouse.zoom = house.zoom
             logAll()
         }
     }
