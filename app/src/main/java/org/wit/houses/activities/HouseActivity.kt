@@ -62,9 +62,6 @@ class HouseActivity : AppCompatActivity() {
 
         binding.btnDelete.setOnClickListener() {
             doIrreversibleStuffOrCancel()
-          //  app.houses.delete(house)
-           // setResult(RESULT_OK)
-           // finish()
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -94,7 +91,6 @@ class HouseActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
         binding.placemarkLocation.setOnClickListener {
-          //  i ("Set Location Pressed")
             val launcherIntent = Intent(this, MapsActivity::class.java)
             mapIntentLauncher.launch(launcherIntent)
         }
