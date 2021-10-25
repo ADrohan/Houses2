@@ -10,15 +10,17 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.houses.R
+import org.wit.houses.models.Location
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var map: GoogleMap
+    var location = Location()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_maps)
+        location = intent.extras?.getParcelable<Location>("location")!!
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -26,9 +28,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        val wit = LatLng(52.245696, -7.139102)
-        mMap.addMarker(MarkerOptions().position(wit).title("Marker in Waterford"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(wit, 16f))
+        map = googleMap
+        val loc = LatLng(location.lat, location.lng)
+        val options = MarkerOptions()
+            .title("House")
+            .snippet("GPS : $loc")
+            .draggable(true)
+            .position(loc)
+        map.addMarker(options)
+       map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 }

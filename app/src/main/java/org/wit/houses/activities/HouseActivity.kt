@@ -15,6 +15,7 @@ import org.wit.houses.databinding.ActivityHouseBinding
 import org.wit.houses.helpers.showImagePicker
 import org.wit.houses.main.MainApp
 import org.wit.houses.models.HouseModel
+import org.wit.houses.models.Location
 import splitties.alertdialog.*
 
 import timber.log.Timber.i
@@ -91,7 +92,9 @@ class HouseActivity : AppCompatActivity() {
             showImagePicker(imageIntentLauncher)
         }
         binding.placemarkLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
             val launcherIntent = Intent(this, MapsActivity::class.java)
+                .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
         registerImagePickerCallback()
