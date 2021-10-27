@@ -46,11 +46,11 @@ class HouseActivity : AppCompatActivity() {
             edit = true
             house = intent.extras?.getParcelable("house_edit")!!
             binding.houseAddress.setText(house.address)
-            binding.listPrice.setText(house.listPrice)
-            binding.bedrooms.setText(house.bedrooms)
-            binding.bathrooms.setText(house.bathrooms)
+            binding.listPrice.setText(house.listPrice.toString())
+            binding.bedrooms.setText(house.bedrooms.toString())
+            binding.bathrooms.setText(house.bathrooms.toString())
             binding.description.setText(house.description)
-            binding.soldPrice.setText(house.soldPrice)
+            binding.soldPrice.setText(house.soldPrice.toString())
             binding.auctioneer.setText(house.auctioneer)
             binding.btnAdd.setText(R.string.Update_house)
             Picasso.get()
@@ -67,16 +67,15 @@ class HouseActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             house.address= binding.houseAddress.text.toString()
-            house.listPrice= binding.listPrice.text.toString()
-            house.bedrooms= binding.bedrooms.text.toString()
-            house.bathrooms=binding.bathrooms.text.toString()
+            house.listPrice= binding.listPrice.text.toString().toInt()
+            house.bedrooms= binding.bedrooms.text.toString().toInt()
+            house.bathrooms=binding.bathrooms.text.toString().toInt()
             house.description=binding.description.text.toString()
-            house.soldPrice= binding.soldPrice.text.toString()
+            house.soldPrice= binding.soldPrice.text.toString().toInt()
             house.auctioneer= binding.auctioneer.text.toString()
-            if (house.address.isEmpty() ){
-                Snackbar
-                    .make(it,R.string.enter_houseAddress, Snackbar.LENGTH_LONG )
-                    .show()
+            if (house.address.isEmpty()) {
+                Snackbar.make(it,R.string.enter_houseAddress, Snackbar.LENGTH_LONG )
+                .show()
             }
             else {
                 if (edit) {
@@ -85,6 +84,7 @@ class HouseActivity : AppCompatActivity() {
                     app.houses.create(house.copy())
                 }
             }
+            i("add Button Pressed: $house")
             setResult(RESULT_OK)
             finish()
         }

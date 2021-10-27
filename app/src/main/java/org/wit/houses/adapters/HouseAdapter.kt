@@ -33,14 +33,13 @@ class HouseAdapter constructor(private var houses: List<HouseModel>,
 
         fun bind(house: HouseModel, listener: HouseListener) {
             binding.houseAddress.text = house.address
-            binding.listPrice.text = house.listPrice
-            binding.bedrooms.text = house.bedrooms
-            binding.bathrooms.text = house.bathrooms
+            binding.listPrice.text = house.listPrice.toString()
+            binding.bedrooms.text = house.bedrooms.toString()
+            binding.bathrooms.text = house.bathrooms.toString()
             binding.description.text = house.description
             binding.auctioneer.text = house.auctioneer
-            binding.soldPrice.text = house.soldPrice
+            binding.soldPrice.text = house.soldPrice.toString()
             Picasso.get().load(house.image).resize(200,200).into(binding.imageIcon)
-
             binding.root.setOnClickListener { listener.onHouseClick(house)}
         }
     }
