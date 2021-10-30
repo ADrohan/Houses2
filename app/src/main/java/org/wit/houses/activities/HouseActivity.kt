@@ -23,10 +23,10 @@ import timber.log.Timber.i
 class HouseActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHouseBinding
-    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     var house = HouseModel()
     lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,27 +66,56 @@ class HouseActivity : AppCompatActivity() {
         }
 
         binding.btnAdd.setOnClickListener() {
-            house.address= binding.houseAddress.text.toString()
-            house.listPrice= binding.listPrice.text.toString().toInt()
-            house.bedrooms= binding.bedrooms.text.toString().toInt()
-            house.bathrooms=binding.bathrooms.text.toString().toInt()
-            house.description=binding.description.text.toString()
-            house.soldPrice= binding.soldPrice.text.toString().toInt()
-            house.auctioneer= binding.auctioneer.text.toString()
-            if (house.address.isEmpty()) {
-                Snackbar.make(it,R.string.enter_houseAddress, Snackbar.LENGTH_LONG )
-                .show()
+            house.address = binding.houseAddress.text.toString()
+            house.description = binding.description.text.toString()
+            house.auctioneer = binding.auctioneer.text.toString()
+
+            try {
+                house.listPrice = binding.listPrice.text.toString().toInt()
+            } catch (ex:Exception) {
+                house.listPrice = 0
             }
+
+            try {
+                house.bedrooms = binding.bedrooms.text.toString().toInt()
+            } catch (ex:Exception) {
+                house.bedrooms = 0
+            }
+
+            try {
+                house.bathrooms = binding.bathrooms.text.toString().toInt()
+            } catch (ex:Exception) {
+                house.bathrooms = 0
+            }
+
+            try {
+                house.soldPrice = binding.soldPrice.text.toString().toInt()
+            } catch (ex:Exception) {
+                house.soldPrice = 0
+            }
+
+            if (house.address.isEmpty() ) {
+                Snackbar.make(it, R.string.enter_houseAddress, Snackbar.LENGTH_LONG)
+                    .show()
+            }
+
+            else if (house.listPrice == 0 ) {
+                Snackbar.make(it,R.string.enter_listPrice, Snackbar.LENGTH_LONG )
+                    .show()
+            }
+
             else {
                 if (edit) {
                     app.houses.update(house.copy())
+                    setResult(RESULT_OK)
+                    finish()
                 } else {
                     app.houses.create(house.copy())
+                    setResult(RESULT_OK)
+                    finish()
                 }
             }
             i("add Button Pressed: $house")
-            setResult(RESULT_OK)
-            finish()
         }
         binding.chooseImage.setOnClickListener {
             showImagePicker(imageIntentLauncher)
