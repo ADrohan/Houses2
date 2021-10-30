@@ -32,7 +32,7 @@ class HouseListActivity : AppCompatActivity(), HouseListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = HouseAdapter(app.houses.findAll(), this)
+        loadHouses()
 
         registerRefreshCallback()
     }
@@ -59,6 +59,14 @@ class HouseListActivity : AppCompatActivity(), HouseListener {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { binding.recyclerView.adapter?.notifyDataSetChanged() }
+            { loadHouses() }
+    }
+    private fun loadHouses() {
+        showHouses(app.houses.findAll())
+    }
+
+    fun showHouses (houses: List<HouseModel>) {
+        binding.recyclerView.adapter = HouseAdapter(houses, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 }

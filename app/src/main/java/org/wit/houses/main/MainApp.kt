@@ -1,21 +1,22 @@
 package org.wit.houses.main
 
 import android.app.Application
+import org.wit.houses.models.HouseJSONStore
 import org.wit.houses.models.HouseMemStore
 import org.wit.houses.models.HouseModel
+import org.wit.houses.models.HouseStore
 import timber.log.Timber
 import timber.log.Timber.i
 
 class MainApp : Application() {
 
-   // val houses = ArrayList<HouseModel>()
-    val houses = HouseMemStore()
+    lateinit var houses: HouseStore
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        //houses = HouseMemStore()
+        houses = HouseJSONStore(applicationContext)
         i("Houses started")
-       // houses.add(HouseModel("3 Bridge St., Waterford", "80000","2", "2", "description", "95000", "DMG" ))
-       // houses.add(HouseModel("4 Bridge St., Waterford", "79000","2", "2", "description", "94000", "DMG" ))
     }
 }
