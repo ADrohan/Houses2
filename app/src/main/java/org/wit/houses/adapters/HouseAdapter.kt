@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.wit.houses.R
 import org.wit.houses.databinding.CardHouseBinding
 import org.wit.houses.models.HouseModel
 
@@ -39,7 +40,7 @@ class HouseAdapter constructor(private var houses: List<HouseModel>,
             binding.description.text = house.description
             binding.auctioneer.text = house.auctioneer
             binding.soldPrice.text = house.soldPrice.toString()
-            Picasso.get().load(house.image).resize(200,200).into(binding.imageIcon)
+            Picasso.get().load(house.image).placeholder(R.drawable.home_modern).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onHouseClick(house)}
         }
     }
