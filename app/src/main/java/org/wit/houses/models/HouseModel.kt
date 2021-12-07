@@ -14,6 +14,7 @@ data class HouseModel(
     var description: String = "",
     var soldPrice: Int = 0,
     var auctioneer: String = "",
+    var listDate: String = "",
     var image: Uri = Uri.EMPTY,
     var lat : Double = 0.0,
     var lng: Double = 0.0,

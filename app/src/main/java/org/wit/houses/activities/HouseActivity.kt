@@ -19,6 +19,8 @@ import org.wit.houses.models.Location
 import splitties.alertdialog.*
 
 import timber.log.Timber.i
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HouseActivity : AppCompatActivity() {
 
@@ -110,6 +112,9 @@ class HouseActivity : AppCompatActivity() {
                     setResult(RESULT_OK)
                     finish()
                 } else {
+                    val simpleDateFormat = SimpleDateFormat("dd.MM.yyy")
+                    val currentDate: String = simpleDateFormat.format(Date())
+                    house.listDate = currentDate
                     app.houses.create(house.copy())
                     setResult(RESULT_OK)
                     finish()
