@@ -20,6 +20,7 @@ class HouseListActivity : AppCompatActivity(), HouseListener {
     lateinit var app: MainApp
     private lateinit var binding: ActivityHouseListBinding
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapsIntentLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class HouseListActivity : AppCompatActivity(), HouseListener {
         loadHouses()
 
         registerRefreshCallback()
+        registerMapsCallback()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -47,19 +49,29 @@ class HouseListActivity : AppCompatActivity(), HouseListener {
                 val launcherIntent = Intent(this, HouseActivity::class.java)
                 refreshIntentLauncher.launch(launcherIntent)
             }
+            R.id.item_map -> {
+                val launcherIntent = Intent(this, HouseMapsActivity::class.java)
+                refreshIntentLauncher.launch(launcherIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
     override fun onHouseClick(house: HouseModel) {
         val launcherIntent = Intent(this, HouseActivity::class.java)
         launcherIntent.putExtra("house_edit", house)
-        refreshIntentLauncher.launch(launcherIntent)
+        mapsIntentLauncher.launch(launcherIntent)
     }
 
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
             { loadHouses() }
+    }
+
+    private fun registerMapsCallback() {
+        mapsIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            {}
     }
     private fun loadHouses() {
         showHouses(app.houses.findAll())

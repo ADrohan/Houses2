@@ -12,6 +12,11 @@
         android:roundIcon="@mipmap/ic_app_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Houses">
+        <activity
+            android:name=".activities.HouseMapsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_house_maps"
+            android:theme="@style/Theme.Houses.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -30,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HouseActivity"></activity>
+        <activity android:name=".activities.HouseActivity" />
     </application>
 
 </manifest>
