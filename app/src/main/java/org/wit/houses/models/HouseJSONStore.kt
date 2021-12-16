@@ -34,6 +34,11 @@ class HouseJSONStore(private val context: Context) : HouseStore {
         return houses
     }
 
+    override fun findById(id:Long) : HouseModel? {
+        val foundHouse: HouseModel? = houses.find { it.id == id }
+        return foundHouse
+    }
+
     override fun create(house: HouseModel) {
         house.id = generateRandomId()
         houses.add(house)
@@ -58,8 +63,9 @@ class HouseJSONStore(private val context: Context) : HouseStore {
             foundHouse.lat = house.lat
             foundHouse.lng = house.lng
             foundHouse.zoom = house.zoom
-            serialize()
+         //   serialize()
         }
+        serialize()
     }
 
     private fun serialize() {

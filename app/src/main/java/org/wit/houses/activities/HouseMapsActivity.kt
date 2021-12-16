@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.squareup.picasso.Picasso
+import org.wit.houses.R
 import org.wit.houses.databinding.ActivityHouseMapsBinding
 import org.wit.houses.databinding.ContentHouseMapsBinding
 import org.wit.houses.main.MainApp
 
-class HouseMapsActivity : AppCompatActivity() {
+class HouseMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     private lateinit var binding: ActivityHouseMapsBinding
     private lateinit var contentBinding: ContentHouseMapsBinding
@@ -36,6 +39,7 @@ class HouseMapsActivity : AppCompatActivity() {
     }
 
     fun configureMap() {
+        map.setOnMarkerClickListener(this)
         map.uiSettings.setZoomControlsEnabled(true)
         app.houses.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
@@ -43,6 +47,24 @@ class HouseMapsActivity : AppCompatActivity() {
             map.addMarker(options).tag = it.id
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
+    }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val tag = marker.tag as Long
+        val house = app.houses.findById(tag)
+        contentBinding.includeCard.houseAddress.text = house!!.address
+        contentBinding.includeCard.listPrice.text = house.listPrice.toString()
+        contentBinding.includeCard.listDate.text = house.listDate
+        contentBinding.includeCard.soldPrice.text = house.soldPrice.toString()
+        contentBinding.includeCard.description.text = house.description
+        contentBinding.includeCard.bathrooms.text = house.bathrooms.toString()
+        contentBinding.includeCard.bedrooms.text = house.bedrooms.toString()
+        Picasso.get()
+            .load(house.image)
+            .placeholder(R.drawable.home_modern)
+            .into(contentBinding.includeCard.imageIcon)
+        return true
+
     }
 
     override fun onDestroy() {

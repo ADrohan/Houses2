@@ -5,4 +5,5 @@ interface HouseStore {
     fun create(house: HouseModel)
     fun update(house: HouseModel)
     fun delete(house: HouseModel)
+    fun findById(id:Long) : HouseModel?
 }

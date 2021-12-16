@@ -15,6 +15,11 @@ class HouseMemStore : HouseStore {
         return houses
     }
 
+    override fun findById(id:Long) : HouseModel? {
+        val foundHouse: HouseModel? = houses.find { it.id == id }
+        return foundHouse
+    }
+
     override fun create(house: HouseModel) {
         house.id = getId()
         houses.add(house)

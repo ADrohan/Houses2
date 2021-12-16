@@ -9,28 +9,28 @@
     android:elevation="24dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:background="@color/secondaryLightColor">
+        android:layout_width="461dp"
+        android:layout_height="match_parent"
+        android:background="@color/secondaryLightColor"
+        android:padding="0dp">
 
         <TextView
             android:id="@+id/houseAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:paddingStart="0dp"
-            android:paddingEnd="40dp"
+            android:paddingEnd="80dp"
             android:text="@string/hint_houseAddress"
             android:textColor="@color/secondaryTextColor"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"  />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageIcon"
@@ -90,10 +90,9 @@
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="310dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="371dp"
+            android:layout_height="26dp"
+            android:layout_marginBottom="4dp"
             android:drawablePadding="4dp"
             android:ellipsize="end"
             android:fontFamily="sans-serif-light"
@@ -107,10 +106,10 @@
             app:drawableTint="@color/secondaryDarkColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintHorizontal_bias="0.177"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bathrooms"
-            app:layout_constraintVertical_bias="0.102" />
+            app:layout_constraintTop_toBottomOf="@+id/bedrooms"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/soldPrice"
@@ -125,7 +124,7 @@
 
         <TextView
             android:id="@+id/listTitle"
-            android:layout_width="130dp"
+            android:layout_width="122dp"
             android:layout_height="28dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -141,8 +140,8 @@
 
         <TextView
             android:id="@+id/sold_title"
-            android:layout_width="111dp"
-            android:layout_height="27dp"
+            android:layout_width="107dp"
+            android:layout_height="28dp"
             android:layout_marginStart="16dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/hint_sold_title"
